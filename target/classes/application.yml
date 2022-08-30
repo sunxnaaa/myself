@@ -1,16 +1,21 @@
 #端口配置
 server:
-  port: 9000
+  port: 8080
 #Mysql连接池
 spring:
+  application:
+    name: MEET
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: 123456
-      url: jdbc:mysql://49.232.151.78:3306/mysql?&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
-#mybatis-plus SQL输出
+      url: jdbc:mysql://49.232.151.78:3306/test?&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
 mybatis-plus:
   configuration:
+    #控制台打印完整带参数SQL语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    call-setters-on-nulls: true
+  # 这里根据自己项目的包修改，扫描到自己的*xml文件
+  mapper-locations: classpath:xx/xx/xx/**/mapper/*.xml

@@ -1,4 +1,4 @@
-package com.test.sun;
+package com.test.fx;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
