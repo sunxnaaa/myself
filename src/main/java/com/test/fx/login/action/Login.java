@@ -7,7 +7,6 @@ import com.test.fx.util.JwtUtil;
 import com.test.fx.util.ResultCodeEnum;
 import com.test.fx.util.ToolUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/test/fx/login")
+
 public class Login {
     @Autowired
     private UserService userService;
@@ -54,7 +54,6 @@ public class Login {
         }
         return axiosVo;
     }
-
 
     @RequestMapping("userVerify")
     public AxiosVo userVerify(HttpServletRequest request){

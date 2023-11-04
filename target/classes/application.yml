@@ -10,12 +10,16 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
-      password: 123456
-      url: jdbc:mysql://49.232.151.78:3306/test?&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      password: '@Wo258852'
+      url: jdbc:mysql://101.200.87.110:3306/star?&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
 mybatis-plus:
-  configuration:
-    #控制台打印完整带参数SQL语句
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    call-setters-on-nulls: true
-  # 这里根据自己项目的包修改，扫描到自己的*xml文件
-  mapper-locations: classpath:xx/xx/xx/**/mapper/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: dr # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+logging:
+  level:
+    com.test.fx: debug
+    org.springframework: warn
+    org.apache.ibatis.logging: debug

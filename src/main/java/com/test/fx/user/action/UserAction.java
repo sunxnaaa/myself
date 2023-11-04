@@ -3,17 +3,13 @@ package com.test.fx.user.action;
 import com.test.fx.user.model.UserModel;
 import com.test.fx.user.service.UserService;
 import com.test.fx.util.AxiosVo;
-import com.test.fx.util.JwtUtil;
 import com.test.fx.util.ResultCodeEnum;
 import com.test.fx.util.ToolUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
@@ -22,6 +18,11 @@ public class UserAction {
     @Autowired
     private UserService userService;
 
+    /**
+     * @Description 用户查询
+     * @author sunxn
+     * @date 2022/10/20
+     */
     @RequestMapping("validUser")
     public AxiosVo validUser(@RequestBody Map<String,String> user){
         AxiosVo axiosVo = new AxiosVo();
@@ -43,6 +44,22 @@ public class UserAction {
             axiosVo.setSuccess(ResultCodeEnum.USER_NAME_REPEAT.getSuccess());
             axiosVo.setMsg(ResultCodeEnum.USER_NAME_REPEAT.getMessage());
         }
+        return axiosVo;
+    }
+
+    /**
+     * @Description 新增用户
+     * @author sunxn
+     * @date 2022/10/20
+     */
+    @RequestMapping("saveUser")
+    public AxiosVo saveUser(UserModel user){
+        AxiosVo axiosVo = new AxiosVo();
+        UserModel userModel = null;
+        String id = userService.saveUser(user);
+        axiosVo.setCode(ResultCodeEnum.SUCCESS.getCode());
+        axiosVo.setSuccess(ResultCodeEnum.SUCCESS.getSuccess());
+        axiosVo.setMsg(ResultCodeEnum.SUCCESS.getMessage());
         return axiosVo ;
     }
 }

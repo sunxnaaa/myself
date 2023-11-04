@@ -14,7 +14,7 @@ public class JwtUtil {
     //密钥
     public static final String SECRET = "sgfdsopljkhsl;o437632";
     //过期时间:秒
-    public static final int EXPIRE = 60 * 1;
+    public static final int EXPIRE = 60 * 30;
 
     /**
      * 生成Token

@@ -1,10 +1,7 @@
 package com.test.fx.login.action;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.interfaces.Claim;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.test.fx.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -18,8 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-import javax.servlet.http.HttpServletResponse;
-
+/**
+ * @Description拦截器
+ * @author sunxn
+ * @date 2022/11/14
+ */
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
     @Override
@@ -31,7 +31,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         if(StringUtils.isEmpty(headToken)) {
             Map<String, Object> map = new HashMap<>();
             map.put("code", 50008);
-            map.put("message", "请先登录");
+            map.put("message", "token");
             ErrorResponse(response, map);
             return false;
         }

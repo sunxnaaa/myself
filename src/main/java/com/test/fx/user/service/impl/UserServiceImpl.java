@@ -7,7 +7,7 @@ import com.test.fx.user.model.UserModel;
 import com.test.fx.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -19,6 +19,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserModel> implement
 
 
     @Override
+    @Transactional
     public UserModel GetUser(Map<String,String> user){
         UserModel userModel = new UserModel();
         userModel.setUserName(user.get("username"));
@@ -26,4 +27,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,UserModel> implement
         QueryWrapper<UserModel> queryWrapper = new QueryWrapper<>(userModel);
         return userMapper.selectOne(queryWrapper);
     }
+
+    @Override
+    public String saveUser(UserModel user) {
+        return null;
+    }
+
+    @Override
+    public String deleteUser(UserModel user) {
+        return null;
+    }
+
 }

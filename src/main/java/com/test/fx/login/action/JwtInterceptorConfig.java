@@ -8,6 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import javax.annotation.Resource;
 
 
+/**
+ * @Description 拦截器
+ * @author sunxn
+ * @date 2022/11/14
+ */
 @Configuration
 public class JwtInterceptorConfig extends WebMvcConfigurationSupport {
 

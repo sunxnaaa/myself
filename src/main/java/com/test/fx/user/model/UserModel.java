@@ -1,7 +1,6 @@
 package com.test.fx.user.model;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.util.Date;
@@ -9,12 +8,23 @@ import java.util.Date;
 @TableName("sys_user")
 public class UserModel extends Model{
     private static final long serialVersionUID = 123123L;
-    @TableId
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Integer id;
     private String userName;
     private String userPassword;
-    private Date createDate;
     private String oldPassword;
+    private String email;
+    private String roleId;
+    @TableLogic
+    private Integer dr;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date createDate;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String createUser;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateDate;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateUser;
 
     public Integer getId() {
         return id;
@@ -54,5 +64,52 @@ public class UserModel extends Model{
 
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getDr() {
+        return dr;
+    }
+
+    public void setDr(Integer dr) {
+        this.dr = dr;
+    }
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 }
